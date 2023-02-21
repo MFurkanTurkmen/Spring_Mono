@@ -33,10 +33,19 @@ public class MusteriController {
      * http://localhost/musteri/save
      * Get -> bir sayfaya erişme ve ondan bilgi alma isteğidir. özel bir gereksinimi yoktur.
      * Browser ların tümü GET isteği gönderir.
-     * @param ad
-     * @param adres
-     * @param telefon
+
      */
+
+    @GetMapping("/error")
+    public ResponseEntity<String> testError(){
+        int i=0;
+        if(i==0)
+            throw new IllegalArgumentException("Çok Fena Hata oluştu");
+        return ResponseEntity.ok("Hata Sayfası");
+    }
+
+
+
     @GetMapping("/save")
     public void save(String ad,String adres,String telefon){
         Musteri musteri = Musteri.builder()
